@@ -22,3 +22,5 @@ RUN cd /usr/src/freeswitch && \
   ./configure && \
   make && \
   make install
+
+WORKDIR /usr/src/freeswitch

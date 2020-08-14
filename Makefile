@@ -8,6 +8,10 @@ all: image
 image:
 	docker build -t ${REPOSITORY} .
 
+.PHONY: run-mount
+run-mount:
+	docker run --rm --network=host -it -v ${DIR}:/usr/src/freeswitch:rw --name fsbuild ${REPOSITORY}
+
 .PHONY: tag
 tag: HASH=$(shell docker run --rm ${REPOSITORY}:latest git -C /usr/src/freeswitch rev-parse --short HEAD)
 tag:
