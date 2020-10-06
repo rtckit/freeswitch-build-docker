@@ -10,6 +10,10 @@ image:
 
 .PHONY: run-mount
 run-mount:
+	docker run --rm -it -v ${DIR}:/usr/src/freeswitch:rw --name fsbuild ${REPOSITORY}
+
+.PHONY: run-mount-host
+run-mount-host:
 	docker run --rm --network=host -it -v ${DIR}:/usr/src/freeswitch:rw --name fsbuild ${REPOSITORY}
 
 .PHONY: tag
